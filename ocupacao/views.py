@@ -29,7 +29,9 @@ def hospedagem(request):
     if request.method=='POST':
         form=Form_Hospedagem(request.POST)
         if form.is_valid():
-            form.save()
+            hospedagem=form.save()
+            hospedagem=request.user
+            hospedagem.save()
             form=Form_Hospedagem(initial={'user':request.user})
 
     context={
